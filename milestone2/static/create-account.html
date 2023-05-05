@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <title>Account Creation Page</title>
+        <link rel="stylesheet" href="css/style.css"/>
+    </head>
+	<body>
+            <main>
+                <ul>
+                <li class="backImage">
+                <navmen></navmen>
+                        
+                <h1 class="font4">Account Registration</h1>
+                <p></p>
+
+		<fieldset>
+
+		<legend class="font3">Customer Details</legend>
+
+		<form @submit.prevent="createAccount()">
+                    <label class="font1">First Name:</label><input type="text" v-model="customer.firstName"/>
+                    <label class="font1">Surname:</label><input type="text" v-model="customer.surname"/>
+                    <label class="font1">Username:</label><input type="text" v-model="customer.username"/>
+                    <label class="font1">Password:</label><input type="password" v-model="customer.password"/>
+                    <label class="font1">Email Address:</label><input type="email" v-model="customer.emailAddress"/>
+                    <label class="font1">Shipping Address:</label><textarea type="text" v-model="customer.shippingAddress"></textarea>    
+            
+                    <button class="font2" type="submit">Create Account</button>
+		</form>
+
+		</fieldset>
+
+            <p class="nav"><a class="font3" href="index.html">Back to Home</a></p>
+            </li></ul>
+
+        </main>
+            
+            <script type="module" src="js/create-account.js"></script>
+            
+    </body>
+</html>

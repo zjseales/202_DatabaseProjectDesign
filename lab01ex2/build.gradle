@@ -1,0 +1,18 @@
+plugins {
+	id 'java';
+}
+
+tasks.register("createMissingSourceDirs") {
+    group = "Project";
+    description = "Create the missing source directories for this project.";
+    doFirst {
+        sourceSets.each { def sourceRoot ->project.gradle.startParameter
+            sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+                if(!sourceDir.dir.exists()) {
+                    println "Creating ${sourceDir}";
+                    mkdir sourceDir.dir;
+                }
+            }
+        }
+    }
+}

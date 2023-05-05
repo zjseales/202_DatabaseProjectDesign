@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+	<title>HTML Page</title>
+	<link rel="stylesheet" href="css/style.css"/>
+    </head>
+    
+    <body>
+        <main>
+			
+            <navmenu></navmenu>
+
+            <h1>Students</h1>
+				
+				<div class="majors">
+                                    <button @click.prevent="getStudents()">ALL</button>
+                                    <button @click.prevent="filterByMajor(major)" v-for="major in majors">{{major}}</button>
+                                </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="student in students">
+                        <td>{{student.id}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.address}}</td>
+                        <td>{{student.phoneNumber}}</td>
+                        <td><form @submit.prevent="update(student)">
+                                <button>Update</button></form></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <a class="nav" href="index.html">Back to Menu</a>
+        </main>
+    
+        <script type="module" src="js/view-students.js"></script>
+    </body>
+    
+</html>

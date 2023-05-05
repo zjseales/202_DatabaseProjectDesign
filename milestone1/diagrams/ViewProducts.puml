@@ -1,0 +1,57 @@
+@startuml ViewProducts
+
+title : "View Products \nSequence-Diagram for Milestone1\nINFO 202"
+
+' style tweaks to make the diagram a little more readable
+skinparam {
+	Style strictuml
+	RoundCorner 5
+	BoxPadding 35
+	ParticipantPadding 15
+    Padding 2
+
+	Sequence {
+		' make activations yellow too
+		LifeLineBackgroundColor #FDFDCD
+
+		' make stereotypes more presentable
+		Stereotype {
+			Font {
+				Size 11
+				Style plain
+			}
+		}
+	}
+
+	Database {
+		' make database border consistent with the rest of the diagram
+		BorderColor #A80036
+	}
+
+}
+
+actor "User" as user
+participant "MainMenu" as menu <<gui>>
+participant "view : ProductViewer" as viewer <<gui>>
+participant "dao : ProductDAO" as dao <<DAO>>
+database "Database" as db
+
+'user clicks 'view' button
+user -> menu++: click 'View Products'
+create viewer
+menu -> viewer : «construct»
+
+create dao
+viewer -> dao : «construct»
+viewer -> db++ : dao.getProducts()
+return returns all products
+
+user -> menu : Browse Products in the 'view' dialog
+user -> menu : click 'Close' button
+
+' save product in the data store
+menu -> viewer-- : Close the view dialog
+dao--
+destroy viewer
+
+@enduml

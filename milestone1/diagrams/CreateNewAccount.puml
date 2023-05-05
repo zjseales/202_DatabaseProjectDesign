@@ -1,0 +1,76 @@
+@startuml CreateAccount
+
+title : Create New Account \nSequence Diagram for Milestone 1\nINFO 202
+
+' === Style Tweaks ===
+
+' make the diagram a little more readable
+skinparam {
+	Style strictuml
+	RoundCorner 5
+	BoxPadding 35
+	ParticipantPadding 15
+    Padding 2
+
+	Sequence {
+		' make activations yellow too
+		LifeLineBackgroundColor #FDFDCD
+
+		' make stereotypes more presentable
+		Stereotype {
+			Font {
+				Size 11
+				Style plain
+			}
+		}
+	}
+
+	Database {
+		' make database border consistent with the rest of the diagram
+		BorderColor #A80036
+	}
+}
+
+' === Actors / Participants
+
+actor "User" as user
+participant "index" as index << JSP Page >>
+participant "create-account" as cre << JSP Page >>
+participant "CreateAccountServlet" as creServ << Servlet >>
+participant "Session" as session
+participant "customer : Customer" as cust << domain >>
+participant "dao : CustomerDAO" as dao << DAO >>
+database "Database" as db
+
+' === Interactions ===
+
+' user visits main page and clicks create account
+user -> index++ : Vists main page
+user -> index : Clicks 'Register New Account' button
+index -> cre++ : redirect
+index--
+' check validation from session
+cre -> session++ : getAttribute("validation")
+return returns "validation"
+'customer enters account details and clicks create
+user -> cre : Enter new account details
+user -> cre : Click 'Create Account'
+cre -> creServ++ : POST new account details
+cre--
+' dao setup
+create dao
+creServ -> dao : <<construct>>
+'customer instance created
+create cust
+creServ -> cust : << construct from user input >>
+'validation checks
+creServ -> creServ : Check Input\nValidity
+'save new customer in database
+creServ -> db++ : dao.save(customer)
+return
+'redirect to main page
+creServ -> index : redirect
+creServ--
+
+
+@enduml

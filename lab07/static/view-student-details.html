@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+            <script src="js/external/vue.global.js"></script>
+            <script src="js/external/vuex.global.js"></script>
+            <script src="js/external/vuex-persistedstate.js"></script>
+            <script src="js/external/axios.js"></script>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>HTML Page</title>
+            <link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body>
+		<main>
+                    <navmenu></navmenu>
+
+			<fieldset>
+
+			<legend>Student Details</legend>
+
+			<form @submit.prevent="updateStudent()">
+
+            <label>Name:</label><input type="text" v-model="student.name"/>
+            <label>Address:</label><textarea v-model="student.address"></textarea>
+            <label>Phone Number:</label><input v-model="student.phoneNumber"/>
+
+            <button type="submit">Edit Student Details</button>
+			</form>
+			
+			
+
+			</fieldset>
+
+			<a class="nav" href="index.html">Back to Home</a>
+
+		</main>
+            
+            <script type="module" src="js/view-student-details.js"></script>
+	</body>
+</html>

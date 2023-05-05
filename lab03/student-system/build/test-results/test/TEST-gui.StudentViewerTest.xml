@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="gui.StudentViewerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-07-31T12:23:26" hostname="KronicBucky" time="3.935">
+  <properties/>
+  <testcase name="testView()" classname="gui.StudentViewerTest" time="1.761"/>
+  <testcase name="testSearch()" classname="gui.StudentViewerTest" time="2.169"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

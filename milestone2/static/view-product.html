@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>View Selected Product Page</title>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="css/style.css"/>
+    </head>
+    
+    <body>
+        <main>
+            <ul><li class="backImage">
+           <navmen></navmen>
+                        
+            <h1 class="font4">Purchase</h1>
+            <p></p>
+            
+                <fieldset>
+                    <legend class="font3">Purchase Details</legend>
+                    
+                <form class="font7" @submit.prevent="addToCart(product, quantity)">
+                    <label class="font6">ID:</label>{{product.productId}}
+                    <label class="font6">Name:</label>{{product.name}}
+                    <label class="font6">Description:</label>{{product.description}}
+                    <label class="font6">Price:</label>{{formatCurrency(product.listPrice)}}
+                    <label class="font6">Quantity In Stock:</label>{{formatNumber(product.quantityInStock, 0)}}
+                
+                    <p></p>
+                    <label class="font6">Enter amount to purchase:  </label><input type="number" v-model="quantity"/>
+                    <button class="font2" type="submit">Add To Cart</button>
+                    </form>
+                </fieldset>
+                    
+            <p></p>
+            <p class="nav"><a class="font3"  href="browse.html">Back to Store</a></p>
+            </li></ul>
+        </main>
+        
+        <script type="module" src="js/cart.js"></script>
+    </body>
+    
+    
+    
+</html>

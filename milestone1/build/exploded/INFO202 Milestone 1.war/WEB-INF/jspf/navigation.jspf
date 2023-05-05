@@ -1,0 +1,28 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="domain.Customer"%>
+<%@ page pageEncoding="UTF-8" %>
+
+<nav>
+    <%
+        Customer c = (Customer)session.getAttribute("customer");
+        if (c == null) {
+    %>
+        <a href="index.jsp">Home</a>
+	<a href="create-account.jsp">Register new account</a>
+	<a href="sign-in.jsp">Sign-in</a>
+    <%  
+        } else {
+            String fullname = c.getFirstName() + " " + c.getSurname();
+            String msg = "Welcome " + fullname;
+    %>
+        <a href="index.jsp">Home</a>
+	<a href="browse.jsp">Browse Products</a>
+	<a href="sign-out">Sign-out</a>
+        <span style="text-align:right;">
+            <%= msg %>
+        </span>
+    <%
+        }
+    %>
+    
+</nav>

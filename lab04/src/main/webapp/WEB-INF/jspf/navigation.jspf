@@ -1,0 +1,7 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+<nav>
+	<a href="add-student.jsp">Add a new student</a>
+	<a href="view-students.jsp">View enrolled students</a>
+</nav>
